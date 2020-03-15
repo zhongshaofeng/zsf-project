@@ -1,4 +1,4 @@
-package com.zsf.zsfproject;
+package com.zsf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
