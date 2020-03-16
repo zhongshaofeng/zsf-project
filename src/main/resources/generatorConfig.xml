@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+  <!-- 指定数据库驱动包 -->
+  <classPathEntry location="D:\TomCat7\apache-maven-3.6.3\repos\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar" />
+
+  <!-- 指定链接参数 -->
+  <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+    <!--覆盖生成XML文件-->
+    <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+
+    <commentGenerator>
+      <property name="suppressDate" value="false"/>
+      <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+      <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+
+    <jdbcConnection
+        driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://47.111.144.38:3306/my_database"
+        userId="root"
+        password="zsf7895123">
+      <!--设置可以获取tables remarks信息-->
+      <property name="useInformationSchema" value="true"/>
+      <!--设置可以获取remarks信息-->
+      <property name="remarks" value="true"/>
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <!-- 实体类定义，指定生成项目和包路径 -->
+    <javaModelGenerator targetPackage="com.zsf.entity" targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- SQL文件XML定义，指定生成项目和包路径 -->
+    <sqlMapGenerator targetPackage="mybatis"  targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- Mapper映射器定义 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.zsf.mapper"  targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+	<!-- 指定哪些表参与生成 -->
+    <table  tableName="user" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" enableSelectByExample="false">
+      <columnOverride column="text_content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </table>
+
+  </context>
+</generatorConfiguration>
