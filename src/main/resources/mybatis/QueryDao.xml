@@ -13,7 +13,7 @@
         <result column="msg" jdbcType="VARCHAR" property="msg"></result>
     </resultMap>
     <select id="queryForList" resultType="java.util.HashMap">
-        select * from TEST_TABLE
+        select * from SYS_AGAIN_DEV_MAIN
     </select>
     <select id="queryForList1" resultType="com.zsf.entity.TestTable">
         select id,name,msg from test_table where id = 1

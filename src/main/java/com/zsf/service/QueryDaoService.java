@@ -22,7 +22,7 @@ public class QueryDaoService {
 
     public List<HashMap<String, Object>> query(){
         System.out.println(queryDaao);
-        TestTable list = queryDaao.queryForList1();
+        //TestTable list = queryDaao.queryForList1();
         return queryDaao.queryForList();
     }
 }
