@@ -48,8 +48,9 @@ public class OssApiUtil {
         //创建上传文件源信息
         ObjectMetadata meta = new ObjectMetadata();
 
-        //meta.setContentDisposition();
-
+        //设置Http请求头的参数类型，避免打开链接直接弹下载
+        meta.setContentDisposition("image/jpg");
+        meta.setContentType("image/jpg");
         try{
             InputStream inputStream1=file.getInputStream();
             ByteArrayOutputStream output=new ByteArrayOutputStream();
@@ -62,9 +63,9 @@ public class OssApiUtil {
             output.close();
             inputStream1.close();
             InputStream is = new ByteArrayInputStream(by);
-            System.out.println(firstKey);
-            ossClient.putObject(bucketName, firstKey, is);
-            System.out.println("Object：" + firstKey + "存入OSS成功。");
+            ossClient.putObject(bucketName, firstKey, is,meta);
+            System.out.println("图片已保存至阿里云");
+            System.out.println("https://zsf-oss.oss-cn-hangzhou.aliyuncs.com/" + firstKey);
             return firstKey;
         }catch (Exception e){
             e.printStackTrace();

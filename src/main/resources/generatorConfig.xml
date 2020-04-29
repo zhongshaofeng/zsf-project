@@ -6,7 +6,7 @@
 
 <generatorConfiguration>
   <!-- 指定数据库驱动包 -->
-  <classPathEntry location="D:\tomcat\apache-maven-3.6.3\repos\com\oracle\ojdbc6\11.2.0.3\ojdbc6-11.2.0.3.jar" />
+  <classPathEntry location="D:\TomCat7\apache-maven-3.6.3\repos\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar" />
 
   <!-- 指定链接参数 -->
   <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
@@ -20,10 +20,10 @@
     </commentGenerator>
 
     <jdbcConnection
-        driverClass="oracle.jdbc.driver.OracleDriver"
-        connectionURL="jdbc:oracle:thin:@//192.168.2.199:1521/SXZX001"
-        userId="sxzx_oa"
-        password="sxzx_oa">
+        driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://47.111.144.38:3306/my_database"
+        userId="root"
+        password="zsf7895123">
       <!--设置可以获取tables remarks信息-->
       <property name="useInformationSchema" value="true"/>
       <!--设置可以获取remarks信息-->
@@ -51,9 +51,9 @@
     </javaClientGenerator>
 
 	<!-- 指定哪些表参与生成 -->
-    <table  tableName="sys_user" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" enableSelectByExample="false">
-<!--      <columnOverride column="text_content" javaType="java.lang.String" jdbcType="VARCHAR2" />-->
-<!--      <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <table  tableName="user" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" enableSelectByExample="false">
+      <columnOverride column="text_content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
     </table>
 
   </context>
